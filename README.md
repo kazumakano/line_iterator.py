@@ -3,7 +3,7 @@ This is Python module to get array of pixel values on a line.
 
 ## Usage
 You can create an instance of `LineIterator` class as following.
-It is array of pixel values on the line between `pt1` and `pt2`. 
+It is immutable array of pixel values on the line between `pt1` and `pt2`. 
 ```py
 line_iterator = LineIterator(img: numpy.ndarray, pt1: Any, pt2: Any)
 ```
