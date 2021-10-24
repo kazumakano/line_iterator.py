@@ -19,7 +19,7 @@ line_iterator.show(color_space: Int)
 
 ## Dependency
 This module depends on following external libraries:
-- matplotlib
+- matplotlib (for visualization)
 - numpy
 - opencv-python
 - scikit-image
