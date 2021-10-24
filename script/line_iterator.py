@@ -16,7 +16,7 @@ class LineIterator(np.ndarray):
         if img.dtype != np.uint8:
             raise Exception("data type of image is not 'uint8'")
 
-        offsets = np.array(line(pt1[0], pt1[1], pt2[0], pt2[1]))
+        offsets: tuple[np.ndarray, np.ndarray] = line(pt1[0], pt1[1], pt2[0], pt2[1])
 
         return np.array(img[offsets[0], offsets[1]]).view(type=cls)
 
