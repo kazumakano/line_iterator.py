@@ -11,7 +11,6 @@ GRAY: int = 2
 VMIN = np.uint8(0)
 VMAX = np.uint8(255)
 
-
 class LineIterator(np.ndarray):
     def __new__(cls: type, img: np.ndarray, pt1: Any, pt2: Any) -> LineIterator:
         if img.dtype != np.uint8:
