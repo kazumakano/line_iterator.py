@@ -36,7 +36,7 @@ class LineIterator(np.ndarray):
             axes: np.ndarray = plt.subplots(nrows=4, sharex=True)[1]
             line_img: np.ndarray = cv2.cvtColor(self[np.newaxis], cv2.COLOR_BGR2RGB)    # convert from BGR to RGB
             _show_rgb_bar(axes[0], line_img)
-            _plot_rgb_value(axes[1:], line_img[0])
+            _plot_rgb_values(axes[1:], line_img[0])
 
         elif color_space == RGB_COLOR_SPACE:
             if self.ndim != 2:
@@ -44,7 +44,7 @@ class LineIterator(np.ndarray):
 
             axes: np.ndarray = plt.subplots(nrows=4, sharex=True)[1]
             _show_rgb_bar(axes[0], self[np.newaxis])
-            _plot_rgb_value(axes[1:], self)
+            _plot_rgb_values(axes[1:], self)
         
         elif color_space == GRAY_COLOR_SPACE:
             if self.ndim != 1:
@@ -52,7 +52,7 @@ class LineIterator(np.ndarray):
 
             axes: np.ndarray = plt.subplots(nrows=2, sharex=True)[1]
             _show_gray_bar(axes[0], self[np.newaxis])
-            _plot_gray_value(axes[1], self)
+            _plot_gray_values(axes[1], self)
 
         else:
             raise Exception(f"unexpected color space {color_space} was given")
@@ -67,14 +67,14 @@ def _show_gray_bar(ax: plt.Axes, line_img: np.ndarray) -> None:
     ax.set_yticks(())
     ax.imshow(line_img, cmap="gray", aspect="auto", vmin=VMIN, vmax=VMAX)
 
-def _plot_rgb_value(axes: np.ndarray, line_iterator: LineIterator) -> None:
+def _plot_rgb_values(axes: np.ndarray, line_iterator: LineIterator) -> None:
     colors = ("red", "green", "blue")
     for i, a in enumerate(reversed(axes)):
         a.set_ylim(VMIN, VMAX)
         a.set_yticks((VMIN, VMAX))
         a.plot(line_iterator[:, i], color=colors[i])
 
-def _plot_gray_value(ax: plt.Axes, line_iterator: LineIterator) -> None:
+def _plot_gray_values(ax: plt.Axes, line_iterator: LineIterator) -> None:
     ax.set_ylim(VMIN, VMAX)
     ax.set_yticks((VMIN, VMAX))
     ax.plot(line_iterator, color="black")
