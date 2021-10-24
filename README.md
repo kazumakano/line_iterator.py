@@ -8,11 +8,13 @@ It is immutable array of pixel values on the line between `pt1` and `pt2`.
 line_iterator = LineIterator(img: numpy.ndarray, pt1: Any, pt2: Any)
 ```
 
-`LineIterator` is subclass of `numpy.ndarray`, so that you can access its attributes like `shape` and methods like `mean()`.
-In addition, `LineIterator` class has method `show()`.
+This class is subclass of `numpy.ndarray`, so that you can access its attributes like `shape` and methods like `mean()`.
+
+Futhermore, this class has an additional method `show()`.
 You can visualize its pixel values right away by using it.
+BGR, RGB and gray color spaces are supported.
 ```py
-line_iterator.show()
+line_iterator.show(color_space: Int)
 ```
 
 ## Dependency
