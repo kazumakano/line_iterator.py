@@ -1,7 +1,7 @@
 # line_iterator.py
 This is Python module to get array of pixel values on a line.
 
-# Usage
+## Usage
 You can create an instance of `LineIterator` class as following.
 It is array of pixel values on the line between `pt1` and `pt2`. 
 ```py
@@ -14,3 +14,10 @@ You can visualize pixel values right away by using it.
 ```py
 line_iterator.show()
 ```
+
+## Dependency
+This module depends on following packages:
+- matplotlib
+- numpy
+- opencv-python
+- scikit-image
