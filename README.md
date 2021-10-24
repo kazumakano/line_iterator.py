@@ -16,7 +16,7 @@ line_iterator.show()
 ```
 
 ## Dependency
-This module depends on following packages:
+This module depends on following external libraries:
 - matplotlib
 - numpy
 - opencv-python
