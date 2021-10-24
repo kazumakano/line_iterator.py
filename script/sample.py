@@ -13,5 +13,5 @@ def sample():
 
     line_iterator.show()
 
-if __name__ == "main":
+if __name__ == "__main__":
     sample()
