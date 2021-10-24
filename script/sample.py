@@ -1,14 +1,17 @@
 import cv2
 import numpy as np
 import line_iterator as li
-import os.path as path
 
-img: np.ndarray = cv2.imread(path.dirname(__file__) + "/../sample.png")
-# img: np.ndarray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+IMG_FILE = "path to your image file"
 
-line_iterator = li.LineIterator(img, (0, 0), (img.shape[0] - 20, 200))
+def sample():
+    img: np.ndarray = cv2.imread(IMG_FILE)
 
-print(f"line length is {len(line_iterator)}")
+    line_iterator = li.LineIterator(img, (0, 0), (img.shape[0], img.shape[1]))
 
-line_iterator.show()
-# line_iterator.show(color_space=li.GRAY)
+    print(f"line length is {len(line_iterator)}")
+
+    line_iterator.show()
+
+if __name__ == "main":
+    sample()
