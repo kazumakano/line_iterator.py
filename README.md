@@ -1,5 +1,5 @@
 # line_iterator.py
-This is Python module to get pixel values on a line.
+This is Python module to get array of pixel values on a line.
 
 # Usage
 You can create an instance of `LineIterator` class as following.
