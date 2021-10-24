@@ -19,6 +19,8 @@ class LineIterator(np.ndarray):
             raise Exception(f"the number of dimensions of image is expected to be 2 or 3 but {img.ndim} was given")
         if img.dtype != np.uint8:
             raise Exception(f"data type of image is expected to be 'uint8' but {img.dtype} was given")
+        if len(pt1) != 2 or len(pt2) != 2:
+            raise Exception(f"length of points are expected to be 2 but {len(pt1)} and {len(pt2)} were given")
 
         offsets: tuple[np.ndarray, np.ndarray] = line(pt1[0], pt1[1], pt2[0], pt2[1])
         self = np.array(img[offsets[0], offsets[1]])
