@@ -16,10 +16,3 @@ BGR, RGB and gray color spaces are supported.
 ```py
 line_iterator.show(color_space: Int)
 ```
-
-## Dependency
-This module depends on following external libraries:
-- matplotlib
-- numpy
-- opencv-python
-- scikit-image
