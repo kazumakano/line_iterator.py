@@ -12,7 +12,7 @@ VMIN = np.uint8(0)
 VMAX = np.uint8(255)
 
 class LineIterator(np.ndarray):
-    def __new__(cls: type, img: np.ndarray, pt1: Any, pt2: Any) -> LineIterator:
+    def __new__(cls, img: np.ndarray, pt1: Any, pt2: Any) -> LineIterator:
         if type(img) != np.ndarray:
             raise Exception(f"type of image is expected to be 'numpy.ndarray' but {type(img)} was given")
         if img.ndim not in (2, 3):
