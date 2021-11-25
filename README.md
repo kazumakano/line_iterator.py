@@ -14,5 +14,5 @@ Futhermore, this class has an additional method `show()`.
 You can visualize its pixel values right away by using it.
 BGR, RGB and gray color spaces are supported.
 ```py
-line_iterator.show(color_space: Int)
+line_iterator.show(color_space: int)
 ```
