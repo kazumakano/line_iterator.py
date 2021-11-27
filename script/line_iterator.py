@@ -5,9 +5,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 from skimage.draw import line
 
-BGR_COLOR_SPACE: int = 0
-RGB_COLOR_SPACE: int = 1
-GRAY_COLOR_SPACE: int = 2
+BGR_COLOR_SPACE = 0
+RGB_COLOR_SPACE = 1
+GRAY_COLOR_SPACE = 2
 VMIN = np.uint8(0)
 VMAX = np.uint8(255)
 
