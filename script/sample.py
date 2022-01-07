@@ -19,7 +19,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("img_file", help="specify path to your image file")
+    parser.add_argument("img_file", help="specify path to your image file", metavar="PATH_TO_IMG_FILE")
     img_file: str = parser.parse_args().img_file
 
     sample(img_file)
