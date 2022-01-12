@@ -32,7 +32,7 @@ def _plot_gray_values(ax: plt.Axes, line_iterator: LineIterator) -> None:
 
 class LineIterator(np.ndarray):
     def __new__(cls, img: np.ndarray, pt1: Any, pt2: Any) -> LineIterator:
-        if type(img) != np.ndarray:
+        if not isinstance(img, np.ndarray):
             raise Exception(f"type of image is expected to be 'numpy.ndarray' but {type(img)} was given")
         if img.dtype != np.uint8:
             raise Exception(f"data type of image is expected to be 'uint8' but {img.dtype} was given")
