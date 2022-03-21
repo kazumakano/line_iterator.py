@@ -1,11 +1,11 @@
-from typing import Union
+from __future__ import annotations
 import cv2
 import numpy as np
 from line_iterator import LineIterator
 
 
 def sample(file: str):
-    img: Union[np.ndarray, None] = cv2.imread(file)
+    img: np.ndarray | None = cv2.imread(file)
     if img is None:
         raise Exception(f"{file} can't be loaded")
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("img_file", help="specify path to your image file", metavar="PATH_TO_IMG_FILE")
+    parser.add_argument("img_file", help="specify image file", metavar="PATH_TO_IMG_FILE")
     img_file: str = parser.parse_args().img_file
 
     sample(img_file)

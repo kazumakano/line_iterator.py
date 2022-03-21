@@ -77,3 +77,4 @@ class LineIterator(np.ndarray):
             raise Exception(f"unexpected color space {color_space} was given")
 
         plt.show()
+        plt.close()
