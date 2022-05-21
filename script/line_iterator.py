@@ -1,13 +1,15 @@
 from __future__ import annotations
-from typing import Any
+from enum import IntEnum
+from typing import Any, Literal
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 from skimage.draw import line
 
-BGR_COLOR_SPACE = 0
-RGB_COLOR_SPACE = 1
-GRAY_COLOR_SPACE = 2
+class ColorSpace(IntEnum):
+    BGR = 0
+    GRAY = 1
+    RGB = 2
 
 def _show_rgb_bar(ax: plt.Axes, line_img: np.ndarray) -> None:
     ax.set_yticks(())
@@ -47,34 +49,35 @@ class LineIterator(np.ndarray):
 
         return self.view(type=cls)
 
-    def show(self, color_space: int = BGR_COLOR_SPACE) -> None:
-        if color_space == BGR_COLOR_SPACE:
-            if self.ndim != 2:
-                raise Exception(f"the number of dimensions is not 2 but {self.ndim}")
+    def show(self, color_space: Literal[ColorSpace.BGR, ColorSpace.GRAY, ColorSpace.RGB] = ColorSpace.BGR) -> None:
+        match color_space:
+            case ColorSpace.BGR:
+                if self.ndim != 2:
+                    raise Exception(f"the number of dimensions is not 2 but {self.ndim}")
 
-            axes: np.ndarray = plt.subplots(nrows=4, sharex=True)[1]
-            line_img: np.ndarray = cv2.cvtColor(self[np.newaxis], cv2.COLOR_BGR2RGB)    # convert from BGR to RGB
-            _show_rgb_bar(axes[0], line_img)
-            _plot_rgb_values(axes[1:], line_img[0])
+                axes: np.ndarray = plt.subplots(nrows=4, sharex=True)[1]
+                line_img: np.ndarray = cv2.cvtColor(self[np.newaxis], cv2.COLOR_BGR2RGB)    # convert from BGR to RGB
+                _show_rgb_bar(axes[0], line_img)
+                _plot_rgb_values(axes[1:], line_img[0])
 
-        elif color_space == RGB_COLOR_SPACE:
-            if self.ndim != 2:
-                raise Exception(f"the number of dimensions is not 2 but {self.ndim}")
+            case ColorSpace.RGB:
+                if self.ndim != 2:
+                    raise Exception(f"the number of dimensions is not 2 but {self.ndim}")
 
-            axes: np.ndarray = plt.subplots(nrows=4, sharex=True)[1]
-            _show_rgb_bar(axes[0], self[np.newaxis])
-            _plot_rgb_values(axes[1:], self)
-        
-        elif color_space == GRAY_COLOR_SPACE:
-            if self.ndim != 1:
-                raise Exception(f"the number of dimensions is not 1 but {self.ndim}")
+                axes: np.ndarray = plt.subplots(nrows=4, sharex=True)[1]
+                _show_rgb_bar(axes[0], self[np.newaxis])
+                _plot_rgb_values(axes[1:], self)
+            
+            case ColorSpace.GRAY:
+                if self.ndim != 1:
+                    raise Exception(f"the number of dimensions is not 1 but {self.ndim}")
 
-            axes: np.ndarray = plt.subplots(nrows=2, sharex=True)[1]
-            _show_gray_bar(axes[0], self[np.newaxis])
-            _plot_gray_values(axes[1], self)
+                axes: np.ndarray = plt.subplots(nrows=2, sharex=True)[1]
+                _show_gray_bar(axes[0], self[np.newaxis])
+                _plot_gray_values(axes[1], self)
 
-        else:
-            raise Exception(f"unexpected color space {color_space} was given")
+            case _:
+                raise Exception(f"unexpected color space {color_space} was given")
 
         plt.show()
         plt.close()
